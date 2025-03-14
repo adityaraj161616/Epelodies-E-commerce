@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>epeoloides | Luxury Fashion</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: -7px;
+      padding: 11px;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Header styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background-color: black;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a,
+    .nav-actions button {
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* Secondary navigation */
+    .secondary-nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      background-color: black;
+      position: absolute;
+      top: 120px;
+      left: 0;
+      right: 0;
+      z-index: 900;
+    }
+
+    .secondary-nav a {
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 22px;
+      /* Space for fixed header */
+      gap: 16px;
+      min-height: 800px;
+      /* Set a minimum height for the grid */
+    }
+
+    .grid-item {
+      position: relative;
+      height: 100%;
+      /* Make the grid items take up the full height of the grid */
+      overflow: hidden;
+      /* Prevent images from overflowing */
+    }
+
+    .grid-item img {
+      width: 100%;
+      /* Make the image fill the grid item's width */
+      height: 100%;
+      /* Make the image fill the grid item's height */
+      object-fit: cover;
+      /* Maintain aspect ratio and crop excess */
+      filter: grayscale(100%);
+    }
+
+    /* Circle overlay */
+    .circle-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 350px;
+      height: 350px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .brand-name {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    /* Text overlay */
+    .text-overlay {
+      color: white;
+      position: absolute;
+      bottom: 40px;
+      left: 40px;                   
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .text-overlay button {
+      background: none;
+      border: none;
+      color: white;
+      text-decoration: underline;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      padding: 0;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    /* Middle grid */
+    .middle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .middle-grid-item {
+      margin: 3px;
+      padding: 3px;
+      position: relative;
+      height: 1oo%;
+      overflow: hidden;
+      /* Prevent images from overflowing */
+    }
+
+    .middle-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    /* Full width section */
+    .full-width {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+      /* Prevent images from overflowing */
+    }
+
+    .full-width img {
+      width: 100%;
+      /* Ensure images take up the full width of their container */
+      height: 100%;
+      /* Ensure images take up the full height of their container */
+      object-fit: cover;
+      /* Maintain aspect ratio and crop excess */
+      filter: grayscale(100%);
+    }
+
+    /* World section */
+    .world-section {
+      padding: 32px 0;
+    }
+
+    .world-section h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+
+    .world-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 0 16px;
+    }
+
+    .world-grid-item {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      /* Prevent images from overflowing */
+    }
+
+    .world-grid-item img {
+      width: 100%;
+      /* Ensure images take up the full width of their container */
+      height: 100%;
+      /* Ensure images take up the full height of their container */
+      object-fit: cover;
+      /* Maintain aspect ratio and crop excess */
+
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid #333;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .footer-brand h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .footer-newsletter h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .newsletter-form {
+      display: flex;
+    }
+
+    .newsletter-form input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #555;
+      color: white;
+      padding: 4px 8px;
+      flex-grow: 1;
+      margin-right: 8px;
+    }
+
+    .newsletter-form button {
+      background: none;
+      border: none;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      border-top: 1px solid #333;
+      padding-top: 16px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Small text overlay */
+    .small-text-overlay {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: right;
+    }
+
+    .small-text-overlay button {
+      background: none;
+      border: none;
+      color: white;
+      text-decoration: underline;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 10px;
+      padding: 0;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+
+    /* Hover effects */
+    .nav-links a:hover,
+    .nav-actions button:hover,
+    .secondary-nav a:hover,
+    .text-overlay button:hover,
+    .small-text-overlay button:hover,
+    .newsletter-form button:hover {
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+
+      .grid,
+      .middle-grid,
+      .world-grid {
+        grid-template-columns: 1fr;
+        /* Stack items in a single column */
+      }
+
+      .footer-top,
+      .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .circle-overlay {
+        width: 250px;
+        height: 250px;
+      }
+
+      .brand-name {
+        font-size: 36px;
+      }
+
+      .nav-links,
+      .secondary-nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links a,
+      .nav-actions button,
+      .secondary-nav a {
+        font-size: 10px;
+      }
+
+      .secondary-nav {
+        top: 80px;
+      }
+    }
+
+    /* Reusable image adjustment class */
+    .image-adjust {
+      width: auto;
+      /* Default width */
+      height: auto;
+      /* Default height */
+      object-fit: cover;
+      /* Default coverage */
+    }
+
+    /* Example usage: Override specific properties */
+    .image-adjust.custom {
+      width: 80%;
+      /* Example: Adjust width */
+      height: 300px;
+      /* Example: Adjust height */
+      object-fit: contain;
+      /* Example: Adjust coverage */
+    }
+
+    /* Reset overflow properties for images */
+    img {
+      overflow-clip-margin: unset;
+      overflow: unset;
+    }
+
+    /* Logo section styles */
+    .logo-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      background-color: black;
+    }
+
+    .logo-section img {
+      width: auto;
+      height: 19vh;
+      /* Adjust the height as needed */
+      object-fit: contain;
+      filter: invert(1);
+      /* Make the logo white */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-links">
+      <a href="#">Fashion</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">About</a>
+      <a href="#">Stores</a>
+      <a href="#">Sustainability</a>
+    </div>
+    <div class="nav-actions">
+      <button>Search</button>
+      <button>Login</button>
+    </div>
+  </header>
+
+  <!-- Logo Section -->
+  <div class="logo-section">
+    <img src="images/LOGO.png" alt="Epeoloides Logo">
+  </div>
+
+  <!-- Secondary Navigation -->
+  <div class="secondary-nav">
+    <a href="#">Highlights</a>
+    <a href="#">Women</a>
+    <a href="#">Men</a>
+    <a href="#">Kids</a>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="grid">
+    <div class="grid-item">
+      <div class="circle-overlay">
+        <h1 class="brand-name">epeoloides</h1>
+      </div>
+      <img src="images/ben-scott-bCnM5P0gcpY-unsplash.jpg" alt="Fashion model with curly hair">
+      <div class="text-overlay">
+        <p>Spring / Summer 2023</p>
+        <p>New Collection</p>
+        <button>Shop the collection</button>
+      </div>
+    </div>
+    <div class="grid-item">
+      <img src="images/katsiaryna-endruszkiewicz-BteCp6aq4GI-unsplash.jpg" alt="Fashion model in dark clothing">
+    </div>
+  </div>
+
+  <!-- Middle Grid - Row 1 -->
+  <div class="middle-grid">
+    <div class="middle-grid-item">
+      <img src="images/macy-taylor-AkhUJBrhrOQ-unsplash (1).jpg" alt="Fashion model in urban setting">
+    </div>
+    <div class="middle-grid-item">
+      <img src="images/ali-hadadi-kia-CB2B56hweCU-unsplash (1).jpg" alt="Fashion model with sunglasses">
+    </div>
+  </div>
+
+  <!-- Middle Grid - Row 2 -->
+  <div class="middle-grid">
+    <div class="middle-grid-item">
+      <img src="images/prince-akachi-7j9jNQxXUCU-unsplash.jpg" alt="Fashion model in coat">
+    </div>
+    <div class="middle-grid-item">
+      <img src="images/a1_6.webp" alt="Mirror selfie">
+      <div class="small-text-overlay">
+        <p>Spring / Summer 2023 Men's A/W Campaign</p>
+        <p>Styled by Steven Meisel</p>
+        <button>Shop the collection</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Models Section -->
+  <div class="full-width">
+    <img src="images/kevin-laminto-07wBhL5WqgI-unsplash.jpg" alt="Three models in white outfits">
+  </div>
+
+  <!-- Products Section -->
+  <div class="middle-grid">
+    <div class="middle-grid-item">
+      <img src="images/04-desk-dg-main-adv-ss25.webp" alt="Men's bag">
+      <div class="text-overlay">
+        <h3>Men's Bags</h3>
+        <button>Shop Now</button>
+      </div>
+    </div>
+    <div class="middle-grid-item">
+      <img src="images/05-desk-dg-main-adv-ss25.webp" alt="Men's shoes">
+      <div class="text-overlay">
+        <h3>Men's Shoes</h3>
+        <button>Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- World of Epeoloides Section -->
+  <div class="world-section">
+    <h2>World of Epeoloides</h2>
+    <div class="world-grid">
+      <div class="world-grid-item">
+        <img src="images/mfs-fw25-desk.webp" alt="Fashion show">
+        <div class="text-overlay">
+          <h3>Men's Fall/Winter 2023 Fashion Show</h3>
+          <button>Discover More</button>
+        </div>
+      </div>
+      <div class="world-grid-item">
+        <img src="images/mostra-desk.webp" alt="Fashion event">
+        <div class="text-overlay">
+          <h3>Du Cœur À La Main - epeoloides</h3>
+          <button>Discover More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>epeoloides</h3>
+          <p>Luxury fashion brand since 2010</p>
+          <p>© 2023 Epeoloides International</p>
+        </div>
+        <div>
+          <!-- Empty column for spacing -->
+        </div>
+        <div class="footer-newsletter">
+          <h3>Subscribe to our newsletter</h3>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email">
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>Services</div>
+        <div>Order Tracking</div>
+        <div>Return</div>
+        <div>Customer Care</div>
+        <div>Country & Language</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for the epeoloides website
+    document.addEventListener('DOMContentLoaded', function () {
+      // Header scroll effect
+      const header = document.querySelector('header');
+      const secondaryNav = document.querySelector('.secondary-nav');
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+          header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+
+          if (secondaryNav) {
+            secondaryNav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            secondaryNav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+          }
+        } else {
+          header.style.backgroundColor = 'black';
+          header.style.boxShadow = 'none';
+
+          if (secondaryNav) {
+            secondaryNav.style.backgroundColor = 'black';
+            secondaryNav.style.boxShadow = 'none';
+          }
+        }
+      });
+
+      // Search functionality
+      const searchButton = document.querySelector('.nav-actions button:first-child');
+      if (searchButton) {
+        searchButton.addEventListener('click', function () {
+          // You can replace this with actual search functionality
+          alert('Search functionality would go here');
+        });
+      }
+
+      // Newsletter form submission
+      const newsletterForm = document.querySelector('.newsletter-form');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const emailInput = this.querySelector('input[type="email"]');
+          if (emailInput && emailInput.value) {
+            // You would typically send this to a server
+            alert(`Thank you for subscribing with: ${emailInput.value}`);
+            emailInput.value = '';
+          } else {
+            alert('Please enter a valid email address');
+          }
+        });
+      }
+
+      // Add click handlers for all "Shop" and "Discover" buttons
+      const shopButtons = document.querySelectorAll('button');
+
+      shopButtons.forEach(button => {
+        if (button.textContent.includes('Shop') || button.textContent.includes('Discover')) {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            console.log('Button clicked:', this.textContent.trim());
+            // You would add actual navigation or action here
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
